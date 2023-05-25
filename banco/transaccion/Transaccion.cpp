@@ -1,7 +1,8 @@
 #include <iostream>
 #include "transaccion.h"
+using namespace std;
 
-Transaccion::Transaccion(int nT, int _dia, int _mes, int _anioT, float _cantidad, char _tipoT) {
+Transaccion::Transaccion(int nT, int _dia, int _mes, int _anioT, float _cantidad, char _tipoT){
     this->nro_transaccion = nT;
     this->dia = _dia;
     this->mes = _mes;
@@ -27,6 +28,8 @@ void Transaccion::Mostrar() {
     cout<<"Cantidad: "<<this->cantidad<<endl;
     cout<<"Tipo: "<<this->tipoT<<endl;
     cout<<"--------------------------------------"<<endl; 
+
+    
 }; 
 
 

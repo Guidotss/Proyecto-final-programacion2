@@ -1,7 +1,7 @@
 #include "cliente.h"
 
 
-Cliente::Cliente():Banco(), Transaccion() {
+Cliente::Cliente(){
     this->nro_cliente = 0;
     this->anioC = 0;
     this->nombre = "";
@@ -10,7 +10,7 @@ Cliente::Cliente():Banco(), Transaccion() {
     this->estado = "";
 }
 
-Cliente::Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC, string _estado, int n, int _dia, int _mes, int _anioT, float _cantidad, char _tipoT):Banco(), Transaccion() {
+Cliente::Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC, string _estado, int n, int _dia, int _mes, int _anioT, float _cantidad, char _tipoT){
     this->nro_cliente = nC;
     this->anioC = _anioC;
     this->nombre = _nombre;
@@ -28,13 +28,14 @@ vector<Cliente> Cliente::AgregarCliente(int nro_cliente ,Cliente *nuevo_cliente)
         return this->clientesVector; 
     } 
     archivoClientes<<"----------cliente "<<nuevo_cliente->nro_cliente++<<"------------"<<endl;
-    archivoClientes<<"----------nombre "<<nuevo_cliente->nombre<<"-------------"<<endl;
-    archivoClientes<<"----------apellido "<<nuevo_cliente->apellido<<"-------------"<<endl;
-    archivoClientes<<"----------tipo "<<nuevo_cliente->tipoC<<"-------------"<<endl;
-    archivoClientes<<"----------estado "<<nuevo_cliente->estado<<"-------------"<<endl;
+    archivoClientes<<"nombre "<<nuevo_cliente->nombre<<endl;
+    archivoClientes<<"apellido "<<nuevo_cliente->apellido<<endl;
+    archivoClientes<<"tipo "<<nuevo_cliente->tipoC<<endl;
+    archivoClientes<<"estado "<<nuevo_cliente->estado<<endl;
 
     this->clientesVector.push_back(*nuevo_cliente);
     archivoClientes.close();
+
     return this->clientesVector;
 }
 
@@ -52,6 +53,7 @@ vector<Cliente> Cliente::EliminarCliente(int nro_cliente) {
         cerr<<"Error al abrir archivo"<<endl;
     }
 
+    
     for(auto &it : this->clientesVector){ 
         archivoClientes<<"----------cliente "<<it.nro_cliente++<<"------------"<<endl;
         archivoClientes<<"----------nombre "<<it.nombre<<"-------------"<<endl;
