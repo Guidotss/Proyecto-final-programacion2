@@ -7,8 +7,8 @@
 
 using namespace std;
 
-class Cliente{   
-    private:    
+class Cliente {   
+    protected:    
         int nro_cliente, anioC;
         string nombre, apellido, tipoC, estado;
         
@@ -16,9 +16,18 @@ class Cliente{
         vector<Cliente>clientesVector;
     public:
         Cliente();
-        Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC, string _estado, int n, int _dia, int _mes, int _anioT, float _cantidad, char _tipoT);
-        vector<Cliente> AgregarCliente(int nro_cliente,Cliente *nuevo_cliente);
-        vector<Cliente> EliminarCliente(int nro_cliente);
+        Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC);
+        
+        string Get_nombre(); 
+        string Get_apellido();
+        string Get_tipoC();
+        string Get_estado();
+        int Get_anioC();
+        int Get_nro_cliente();
+        string cambiarEstado();
+
+
+
        /*  void Deposito() override;
         void Mostrar() override; */
 };

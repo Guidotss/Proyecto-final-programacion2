@@ -11,7 +11,6 @@ Transaccion::Transaccion(int nT, int _dia, int _mes, int _anioT, float _cantidad
     this->tipoT = _tipoT;
 }; 
 
-
 Transaccion::Transaccion(){ 
     this->nro_transaccion = 0;
     this->dia = 0;
@@ -31,9 +30,6 @@ void Transaccion::Mostrar() {
 
     
 }; 
-
-
-
 
 void Transaccion::Extraccion() {
     cout<<"-------------------------------------"<<endl; 

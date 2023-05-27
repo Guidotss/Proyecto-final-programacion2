@@ -10,57 +10,40 @@ Cliente::Cliente(){
     this->estado = "";
 }
 
-Cliente::Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC, string _estado, int n, int _dia, int _mes, int _anioT, float _cantidad, char _tipoT){
+Cliente::Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC){
     this->nro_cliente = nC;
     this->anioC = _anioC;
     this->nombre = _nombre;
     this->apellido = _apellido;
     this->tipoC = _tipoC;
-    this->estado = _estado;
+    this->estado = "activo";
 }
 
-
-vector<Cliente> Cliente::AgregarCliente(int nro_cliente ,Cliente *nuevo_cliente) {
-    
-    ofstream archivoClientes("clientes.txt", ios::app); 
-    if(!archivoClientes){ 
-        cerr<<"Error al abrir archivo"<<endl;
-        return this->clientesVector; 
-    } 
-    archivoClientes<<"----------cliente "<<nuevo_cliente->nro_cliente++<<"------------"<<endl;
-    archivoClientes<<"nombre "<<nuevo_cliente->nombre<<endl;
-    archivoClientes<<"apellido "<<nuevo_cliente->apellido<<endl;
-    archivoClientes<<"tipo "<<nuevo_cliente->tipoC<<endl;
-    archivoClientes<<"estado "<<nuevo_cliente->estado<<endl;
-
-    this->clientesVector.push_back(*nuevo_cliente);
-    archivoClientes.close();
-
-    return this->clientesVector;
+string Cliente::Get_nombre(){
+    return this->nombre;
 }
 
-vector<Cliente> Cliente::EliminarCliente(int nro_cliente) {
-    for (auto i = clientesVector.begin(); i != clientesVector.end(); i++) {
-        if (i->nro_cliente == nro_cliente) {
-            clientesVector.erase(i);
-            break;
-        }
-    }
-    
-    ofstream archivoClientes("clientes.txt", ios::trunc); 
+string Cliente::Get_apellido(){
+    return this->apellido;
+}
 
-    if(!archivoClientes){
-        cerr<<"Error al abrir archivo"<<endl;
-    }
+string Cliente::Get_tipoC(){
+    return this->tipoC;
+}
 
-    
-    for(auto &it : this->clientesVector){ 
-        archivoClientes<<"----------cliente "<<it.nro_cliente++<<"------------"<<endl;
-        archivoClientes<<"----------nombre "<<it.nombre<<"-------------"<<endl;
-        archivoClientes<<"----------apellido "<<it.apellido<<"-------------"<<endl;
-        archivoClientes<<"----------tipo "<<it.tipoC<<"-------------"<<endl;
-        archivoClientes<<"----------estado "<<it.estado<<"-------------"<<endl;
-    }
+string Cliente::Get_estado(){
+    return this->estado;
+}
 
-    return clientesVector;
+int Cliente::Get_anioC(){
+    return this->anioC;
+}
+
+int Cliente::Get_nro_cliente(){
+    return this->nro_cliente;
+}
+
+string Cliente::cambiarEstado() {
+    this->estado == "activo" ? this->estado = "inactivo" : "activo";
+    return this->estado;
 }

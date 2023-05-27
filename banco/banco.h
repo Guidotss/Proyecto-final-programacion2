@@ -1,25 +1,29 @@
-#pragma once
+
 #include <iostream>
 #include <vector>
-#include "./cliente/cliente.h"
+#include"./cliente/cliente.h"
+#include"./transaccion/transaccion.h"
+
 
 using namespace std;
 
-class Banco {
+class Banco: public Cliente, public Transaccion {
 
     protected: 
-        Cliente* cliente;
-        vector<Cliente> clientes;
+        vector<Cliente> clientesVector;
+        vector<Transaccion> transacciones;
 
     public: 
         Banco() = default; 
-        Banco(Cliente& clientes){
-            this->clientes.push_back(clientes);
+        Banco(Cliente& clientes): Cliente(){
+            this->clientesVector.push_back(clientes);
         } 
-        virtual vector<Cliente> AgregarCliente(int nro_cliente, Cliente *clienteMap);
-        virtual void Mostrar();
-        virtual void Deposito();
-        virtual void Extraccion();
-        virtual ~Banco() = default;
-        
+        void Mostrar();
+        void Deposito();
+        void Extraccion();
+        ~Banco() = default;
+        vector<Cliente> AgregarCliente(int nro_cliente ,Cliente* nuevo_cliente);
+        vector<Cliente> EliminarCliente(int nro_cliente);
+        vector<Cliente> BuscarClientePorId(int nro_cliente);
+        void Get_Clientes();
 }; 

@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
-
+using namespace std;
 
 class Transaccion {
+
     protected:
         int nro_transaccion, dia, mes, anioT;
         float cantidad;
