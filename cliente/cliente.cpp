@@ -1,10 +1,60 @@
 #include <iostream>
 #include <fstream>
-#include "./banco.h"
+#include "cliente.h"
+
+
+Cliente::Cliente(){
+    this->nro_cliente = 0;
+    this->anioC = 0;
+    this->nombre = "";
+    this->apellido = "";
+    this->tipoC = "";
+    this->estado = "";
+}
+
+Cliente::Cliente(int _anioC, string _nombre, string _apellido, string _tipoC){
+    this->anioC = _anioC;
+    this->nombre = _nombre;
+    this->apellido = _apellido;
+    this->tipoC = _tipoC;
+    this->estado = "activo";
+}
+
+string Cliente::Get_nombre(){
+    return this->nombre;
+}
+
+string Cliente::Get_apellido(){
+    return this->apellido;
+}
+
+string Cliente::Get_tipoC(){
+    return this->tipoC;
+}
+
+string Cliente::Get_estado(){
+    return this->estado;
+}
+
+int Cliente::Get_anioC(){
+    return this->anioC;
+}
+void Cliente::Set_nro_cliente(int nC){
+    nro_cliente = nC;
+}
+int Cliente::Get_nro_cliente(){
+    return this->nro_cliente;
+}
+
+string Cliente::cambiarEstado() {
+    this->estado == "activo" ? this->estado = "inactivo" : "activo";
+    return this->estado;
+}
 
 
 
-vector<Cliente> Banco::AgregarCliente(int nro_cliente ,Cliente *nuevo_cliente) {
+vector<Cliente> Cliente::AgregarCliente(Cliente *nuevo_cliente) {
+
     ofstream archivoClientes("clientes.txt", ios::app); 
     if(!archivoClientes){ 
         cerr<<"Error al abrir archivo"<<endl;
@@ -23,7 +73,7 @@ vector<Cliente> Banco::AgregarCliente(int nro_cliente ,Cliente *nuevo_cliente) {
     return clientesVector;
 }
 
-vector<Cliente> Banco::BuscarClientePorId(int nro_cliente){ 
+vector<Cliente> Cliente::BuscarClientePorId(int nro_cliente){ 
     vector<Cliente>cliente;
 
     for(auto &it : this->clientesVector){ 
@@ -36,7 +86,7 @@ vector<Cliente> Banco::BuscarClientePorId(int nro_cliente){
     
 }
 
-vector<Cliente> Banco::EliminarCliente(int nro_cliente) {
+vector<Cliente> Cliente::EliminarCliente(int nro_cliente) {
     vector<Cliente>cliente = BuscarClientePorId(nro_cliente);
     if(cliente.size() == 0){
         cout<<"No se encontro el cliente"<<endl;
@@ -59,9 +109,9 @@ vector<Cliente> Banco::EliminarCliente(int nro_cliente) {
     }
 
     return clientesVector;
-}
+};
 
-void Banco::Get_Clientes(){
+void Cliente::Get_Clientes(){
 
     ifstream archivoClientes("clientes.txt");
     if(!archivoClientes){
@@ -82,4 +132,23 @@ void Banco::Get_Clientes(){
         archivoClientes.close();
     }
 
+}
+
+bool Cliente::comprobarTipo(int anioC, string tipoC) {
+    if(((2023 - anioC) < 3) && (tipoC == "black")) { 
+        cout<<"El cliente no puede ser black"<<endl;
+        return false;
+    }
+    return true;
+}
+
+
+int Cliente::limiteTarjeta(string tipoC) {  
+    if(tipoC == "black") { 
+        return 250000;
+    }else if(tipoC == "oro"){
+        return 50000;
+    }
+
+    return 0; 
 }

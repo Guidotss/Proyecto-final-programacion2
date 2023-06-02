@@ -1,16 +1,24 @@
-#include "banco/banco.h"
-#include "banco/cliente/cliente.h"
-#include "banco/transaccion/transaccion.h"
+#include "cliente/cliente.h"
+#include "transaccion/transaccion.h"
+
+
 
 
 int main(){
-    Cliente cliente1(1, 2000, "Juan", "Perez", "normal");
-    Banco banco1;
-    Cliente cliente2(2, 2000, "Juan", "Perez", "normal");
-    banco1.AgregarCliente(1, &cliente1);
-    banco1.AgregarCliente(2, &cliente2);
+    Cliente cliente1(2000, "Juan", "Perez", "black");    
+    Cliente cliente2(2000, "Juan", "Perez", "oro");
+
+    cliente1.AgregarCliente(&cliente1);
+    cliente2.AgregarCliente(&cliente2);
+    const int nro1 = cliente1.Get_nro_cliente();
+    const int nro2 = cliente2.Get_nro_cliente();
+
+    cout<<nro1<<endl;
+    cout<<nro2<<endl;
     
-    banco1.Get_Clientes(); 
+    
+
+    
 
     return 0;
 }

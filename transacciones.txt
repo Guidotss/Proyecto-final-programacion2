@@ -1,0 +1,12 @@
+----------cliente 2------------Nro transaccion 0
+Cantidad: 2000
+Tipo: D
+Dia: 1
+Mes: 1
+Anio: 2
+----------cliente 2------------Nro transaccion 0
+Cantidad: 2000
+Tipo: D
+Dia: 2
+Mes: 1
+Anio: 2

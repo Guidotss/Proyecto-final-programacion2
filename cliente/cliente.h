@@ -3,7 +3,7 @@
 #include <string>
 #include<fstream>
 #include<vector>
-#include"../transaccion/transaccion.h"
+#include "../transaccion/transaccion.h"
 
 using namespace std;
 
@@ -16,18 +16,20 @@ class Cliente {
         vector<Cliente>clientesVector;
     public:
         Cliente();
-        Cliente(int nC, int _anioC, string _nombre, string _apellido, string _tipoC);
+        Cliente(int _anioC, string _nombre, string _apellido, string _tipoC);
         
         string Get_nombre(); 
         string Get_apellido();
         string Get_tipoC();
         string Get_estado();
-        int Get_anioC();
-        int Get_nro_cliente();
         string cambiarEstado();
-
-
-
-       /*  void Deposito() override;
-        void Mostrar() override; */
+        int Get_anioC();
+        void Set_nro_cliente(int);
+        int Get_nro_cliente();
+        void Get_Clientes(); 
+        vector<Cliente> AgregarCliente(Cliente *nuevo_cliente);
+        vector<Cliente> BuscarClientePorId(int nro_cliente);
+        vector<Cliente> EliminarCliente(int nro_cliente); 
+        bool comprobarTipo(int anioC, string tipoC);
+        int limiteTarjeta(string tipoC);
 };
