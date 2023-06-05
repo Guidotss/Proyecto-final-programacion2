@@ -2,9 +2,12 @@
 #include <fstream>
 #include "cliente.h"
 
+int Cliente::contadorClientes = 0;
 
 Cliente::Cliente(){
-    this->nro_cliente = 0;
+    contadorClientes++;
+    this-> saldo = 0; 
+    this->nro_cliente = contadorClientes;
     this->anioC = 0;
     this->nombre = "";
     this->apellido = "";
@@ -12,7 +15,10 @@ Cliente::Cliente(){
     this->estado = "";
 }
 
-Cliente::Cliente(int _anioC, string _nombre, string _apellido, string _tipoC){
+Cliente::Cliente(int _anioC, string _nombre, string _apellido, string _tipoC, float _saldo){
+    contadorClientes++;
+    this->nro_cliente = contadorClientes;
+    this->saldo = _saldo;
     this->anioC = _anioC;
     this->nombre = _nombre;
     this->apellido = _apellido;
@@ -43,7 +49,7 @@ void Cliente::Set_nro_cliente(int nC){
     nro_cliente = nC;
 }
 int Cliente::Get_nro_cliente(){
-    return this->nro_cliente;
+    return nro_cliente;
 }
 
 string Cliente::cambiarEstado() {
@@ -132,6 +138,13 @@ void Cliente::Get_Clientes(){
         archivoClientes.close();
     }
 
+}
+void Cliente:: Set_saldo(float _saldo){
+    saldo = _saldo;
+}
+
+float Cliente::Get_saldo(){
+    return saldo;
 }
 
 bool Cliente::comprobarTipo(int anioC, string tipoC) {

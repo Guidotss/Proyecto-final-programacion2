@@ -48,6 +48,8 @@
         "list": "cpp",
         "vector": "cpp",
         "xhash": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "algorithm": "cpp",
+        "optional": "cpp"
     }
 }
